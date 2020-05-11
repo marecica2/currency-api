@@ -1,9 +1,11 @@
-package balla.marek.currencies.data;
+package balla.marek.currencies.repository;
 
 import balla.marek.currencies.Currency;
 import balla.marek.currencies.CurrencyType;
+import balla.marek.currencies.utils.CSVParser;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.Map;
 @Component
 public class CurrencyMapper {
 
-    List<Currency> mapCVS(InputStream csvStream) {
+    public List<Currency> mapCVS(InputStream csvStream) throws IOException {
         CSVParser reader = new CSVParser();
         List<Map<String, String>> records = reader.parse(csvStream);
 
@@ -26,7 +28,6 @@ public class CurrencyMapper {
                            )
             );
         }
-
         return currencies;
     }
 }

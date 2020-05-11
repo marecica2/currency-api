@@ -1,7 +1,6 @@
-package balla.marek.currencies.data;
+package balla.marek.currencies.repository;
 
 import balla.marek.currencies.Currency;
-import balla.marek.currencies.CurrencyType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;

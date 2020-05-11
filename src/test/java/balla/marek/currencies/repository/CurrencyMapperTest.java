@@ -1,4 +1,4 @@
-package balla.marek.currencies.data;
+package balla.marek.currencies.repository;
 
 import balla.marek.currencies.Currency;
 import balla.marek.currencies.CurrencyType;

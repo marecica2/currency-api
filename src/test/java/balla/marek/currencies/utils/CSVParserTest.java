@@ -1,5 +1,6 @@
-package balla.marek.currencies.data;
+package balla.marek.currencies.utils;
 
+import balla.marek.currencies.utils.CSVParser;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;

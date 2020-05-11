@@ -2,7 +2,7 @@ package balla.marek.currencies.web;
 
 import balla.marek.currencies.Currency;
 import balla.marek.currencies.CurrencyType;
-import balla.marek.currencies.data.CurrencyRepository;
+import balla.marek.currencies.repository.CurrencyRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
