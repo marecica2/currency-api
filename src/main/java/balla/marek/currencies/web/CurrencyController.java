@@ -31,7 +31,7 @@ public class CurrencyController {
         return this.store
                 .getCurrencies()
                 .stream()
-                .filter(c ->  curreEnum.equals(c.getType()))
+                .filter(c ->  curreEnum == c.getType())
                 .findFirst();
     }
 }
