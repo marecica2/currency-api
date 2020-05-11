@@ -2,8 +2,11 @@ package balla.marek.currencies.data;
 
 import balla.marek.currencies.Currency;
 import balla.marek.currencies.CurrencyType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -16,6 +19,8 @@ import java.util.List;
 @Scope("singleton")
 public class CurrencyRepository {
 
+    private static final Logger logger = LoggerFactory.getLogger(CurrencyRepository.class);
+
     private List<Currency> currencies = new ArrayList<>();
 
     private CurrencyMapper currencyMapper;
@@ -25,9 +30,11 @@ public class CurrencyRepository {
     }
 
     @PostConstruct
+    @Scheduled(cron = "*/10 * * * * *")  // triggers every 10 seconds for demo purposes
     public void initialize() throws IOException {
         InputStream csvStream = new ClassPathResource("eurofxref.csv").getInputStream();
         this.currencies = this.currencyMapper.mapCVS(csvStream);
+        logger.info(this.currencies.size() + " currencies initialized");
     }
 
     public List<Currency> getCurrencies() {
