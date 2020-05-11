@@ -1,13 +1,13 @@
-package balla.marek.currencies.rest;
+package balla.marek.currencies.web;
 
 import balla.marek.currencies.Currency;
-import balla.marek.currencies.importer.CurrencyStore;
+import balla.marek.currencies.CurrencyType;
+import balla.marek.currencies.data.CurrencyRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,9 +15,9 @@ import java.util.Optional;
 @RequestMapping("/currency")
 public class CurrencyController {
 
-    private CurrencyStore store;
+    private CurrencyRepository store;
 
-    public CurrencyController(CurrencyStore store) {
+    public CurrencyController(CurrencyRepository store) {
         this.store = store;
     }
 

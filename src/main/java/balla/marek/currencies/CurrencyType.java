@@ -1,4 +1,4 @@
-package balla.marek.currencies.rest;
+package balla.marek.currencies;
 
 public enum CurrencyType {
     USD,
