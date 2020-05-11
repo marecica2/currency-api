@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class CurrencyRepository {
 
     @PostConstruct
     @Scheduled(cron = "*/10 * * * * *")  // triggers every 10 seconds for demo purposes
-    public void initialize() throws IOException {
+    public void initialize() throws IOException, ParseException {
         InputStream csvStream = new ClassPathResource("eurofxref.csv").getInputStream();
         this.currencies = this.currencyMapper.mapCVS(csvStream);
         logger.info(this.currencies.size() + " currencies initialized");

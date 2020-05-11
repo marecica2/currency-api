@@ -7,24 +7,25 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Component
 public class CurrencyMapper {
 
-    public List<Currency> mapCVS(InputStream csvStream) throws IOException {
+    public List<Currency> mapCVS(InputStream csvStream) throws IOException, ParseException {
         CSVParser reader = new CSVParser();
         List<Map<String, String>> records = reader.parse(csvStream);
 
         Map<String, String> record = records.get(0);
         List<Currency> currencies = new ArrayList<>();
-
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.US);
         for (CurrencyType currrency : CurrencyType.values()) {
             currencies.add(new Currency(
                                    currrency,
-                                   Double.parseDouble(record.get(currrency.toString()))
+                                   Double.parseDouble(record.get(currrency.toString())),
+                                   dateFormat.parse(record.get("Date"))
                            )
             );
         }
